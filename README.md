@@ -45,5 +45,11 @@ http://localhost:9000/api-docs
 - `typescript`: Suport per a TypeScript.
 - `@types/*`: Definicions de tipus per a biblioteques utilitzades.
 
+## Video explicació del codi
+https://youtu.be/Si-rIPn3PB8
+
+## Fonts usades
+Els exercicis dels seminaris anteriors (Mongoose i JavaScript) i chatGPT sobretot pel swagger.
+
 
 
