@@ -24,3 +24,17 @@ export const updateUser = async (id: string, updateData: Partial<IUser>) => {
 export const deleteUser = async (id: string) => {
     return await User.deleteOne({ _id: id });
 };
+
+export const loginUser = async (email: string, password: string): Promise<{ id: string; email: string } | null> => {
+
+    const user = await User.findOne({ email });
+    if (!user) {
+        throw new Error("usuari no trobat");
+    }
+
+    if (user.password !== password) {
+        throw new Error("contrasenya incorrecta");
+    }
+
+    return { id: user._id.toString(), email: user.email };
+};

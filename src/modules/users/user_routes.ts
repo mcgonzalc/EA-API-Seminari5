@@ -5,7 +5,8 @@ import {
     getAllUsersHandler,
     getUserByIdHandler,
     updateUserHandler,
-    deleteUserHandler
+    deleteUserHandler,
+    loginUserHandler
 } from '../users/user_controller.js';
 
 const router = express.Router();
@@ -179,5 +180,43 @@ router.put('/users/:id', updateUserHandler);
  *         description: Usuario no encontrado
  */
 router.delete('/users/:id', deleteUserHandler);
+
+/**
+ * @openapi
+ * /api/users/login:
+ *   post:
+ *     summary: Inicia sesión
+ *     description: Valida las credenciales del usuario y retorna su información básica.
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *       400:
+ *         description: Faltan credenciales
+ *       401:
+ *         description: Credenciales inválidas
+ */
+router.post('/users/login', loginUserHandler);
 
 export default router;
