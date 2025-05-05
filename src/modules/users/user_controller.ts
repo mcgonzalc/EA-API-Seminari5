@@ -61,8 +61,8 @@ export const loginUserHandler = async (req: Request, res: Response) => {
 
         const data = await loginUser(email, password);
 
-        res.json(data);
+        return res.json(data);
     } catch (error: any) {
-        res.status(401).json({ message: error.message });
+        return res.status(401).json({ message: error.message });
     }
 };

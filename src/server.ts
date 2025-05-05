@@ -53,17 +53,18 @@ const swaggerOptions = {
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Middleware
-app.use(express.json());
-app.use(loggingHandler);
 app.use(corsHandler);
+app.use(loggingHandler);
+app.use(express.json());
+
 //rutas
 app.use('/api', userRoutes);
 app.use('/api', forumRoutes);
 app.use('/api', subjectRoutes);
+
 // Rutes de prova
 app.get('/', (req, res) => {
     res.send('Welcome to my API');
